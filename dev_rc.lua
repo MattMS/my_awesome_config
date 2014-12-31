@@ -38,19 +38,22 @@ for s = 1, SCREEN_COUNT do
 end
 
 
+global_keys = {}
+
 global_keys = awful.util.table.join(
-	awful.key({KEY.MOD,}, KEY.LEFT, awful.tag.viewprev),
-	awful.key({KEY.MOD,}, KEY.RIGHT, awful.tag.viewnext),
-
-	awful.key({KEY.MOD,}, KEY.RETURN, function ()
-		awful.util.spawn(TERMINAL)
-	end),
-
+	global_keys,
 	awful.key({KEY.MOD, KEY.CONTROL}, "r", awesome.restart),
-
 	awful.key({KEY.MOD, KEY.CONTROL}, "q", awesome.quit)
 )
 
+-- Tag relative movement.
+global_keys = awful.util.table.join(
+	global_keys,
+	awful.key({KEY.MOD,}, KEY.LEFT, awful.tag.viewprev),
+	awful.key({KEY.MOD,}, KEY.RIGHT, awful.tag.viewnext)
+)
+
+-- Tag numbers.
 for i = 1, TAG_COUNT do
 	global_keys = awful.util.table.join(
 		global_keys,
@@ -58,5 +61,12 @@ for i = 1, TAG_COUNT do
 		end)
 	)
 end
+
+global_keys = awful.util.table.join(
+	global_keys,
+	awful.key({KEY.MOD,}, KEY.RETURN, function ()
+		awful.util.spawn(TERMINAL)
+	end)
+)
 
 root.keys(global_keys)
