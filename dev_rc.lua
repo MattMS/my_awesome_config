@@ -71,6 +71,10 @@ for i = 1, TAG_COUNT do
 	global_keys = awful.util.table.join(
 		global_keys,
 		awful.key({KEY.MOD}, "#" .. i + 9, function ()
+			local screen = mouse.screen
+			if tags[screen][i] then
+				awful.tag.viewonly(tags[screen][i])
+			end
 		end)
 	)
 end
