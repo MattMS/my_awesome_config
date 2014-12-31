@@ -17,6 +17,7 @@ end
 EDITOR = os.getenv("EDITOR") or "vi"
 
 KEY = {
+	ALT = "Mod1",
 	CONTROL = "Control",
 	ESCAPE = "Escape",
 	LEFT = "Left",
@@ -55,8 +56,8 @@ global_keys = {}
 
 global_keys = awful.util.table.join(
 	global_keys,
-	awful.key({KEY.MOD, KEY.CONTROL}, "r", awesome.restart),
-	awful.key({KEY.MOD, KEY.CONTROL}, "q", awesome.quit)
+	awful.key({KEY.CONTROL, KEY.MOD}, "r", awesome.restart),
+	awful.key({KEY.CONTROL, KEY.MOD}, "q", awesome.quit)
 )
 
 -- Tag relative movement.
@@ -70,10 +71,20 @@ global_keys = awful.util.table.join(
 for i = 1, TAG_COUNT do
 	global_keys = awful.util.table.join(
 		global_keys,
+
 		awful.key({KEY.MOD}, "#" .. i + 9, function ()
 			local screen = mouse.screen
-			if tags[screen][i] then
-				awful.tag.viewonly(tags[screen][i])
+			local tag = tags[screen][i]
+			if tag then
+				awful.tag.viewonly(tag)
+			end
+		end),
+
+		awful.key({KEY.SHIFT, KEY.MOD}, "#" .. i + 9, function ()
+			local screen = mouse.screen
+			local tag = tags[screen][i]
+			if tag then
+				awful.tag.viewtoggle(tag)
 			end
 		end)
 	)
