@@ -1,4 +1,17 @@
-local awful = require("awful")
+-- Standard awesome library.
+require("awful")
+
+-- Notification library.
+require("naughty")
+
+
+if awesome.startup_errors then
+	naughty.notify {
+		preset = naughty.config.presets.critical,
+		title = "There were errors during startup!",
+		text = awesome.startup_errors
+	}
+end
 
 
 EDITOR = os.getenv("EDITOR") or "vi"
