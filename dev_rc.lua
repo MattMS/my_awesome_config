@@ -41,8 +41,6 @@ end
 global_keys = awful.util.table.join(
 	awful.key({KEY.MOD,}, KEY.LEFT, awful.tag.viewprev),
 	awful.key({KEY.MOD,}, KEY.RIGHT, awful.tag.viewnext),
-	awful.key({KEY.MOD,}, "h", awful.tag.viewprev),
-	awful.key({KEY.MOD,}, "l", awful.tag.viewnext),
 
 	awful.key({KEY.MOD,}, KEY.RETURN, function ()
 		awful.util.spawn(TERMINAL)
