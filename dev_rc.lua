@@ -54,12 +54,8 @@ global_keys = awful.util.table.join(
 for i = 1, TAG_COUNT do
 	global_keys = awful.util.table.join(
 		global_keys,
-		awful.key(
-			{KEY.MOD},
-			"#" .. i + 9,
-			function ()
-			end
-		)
+		awful.key({KEY.MOD}, "#" .. i + 9, function ()
+		end)
 	)
 end
 
