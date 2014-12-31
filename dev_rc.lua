@@ -1,32 +1,36 @@
 local awful = require("awful")
 
 
---EDITOR = os.getenv("EDITOR") or "vi"
+EDITOR = os.getenv("EDITOR") or "vi"
 
 KEY = {
 	CONTROL = "Control",
+	ESCAPE = "Escape",
 	LEFT = "Left",
+	MOD = "Mod4",
 	RETURN = "Return",
 	RIGHT = "Right",
 	SHIFT = "Shift",
-	MOD = "Mod4"
+	SPACE = "space",
+	TAB = "Tab"
 }
 
 SCREEN_COUNT = screen.count()
 
 TAG_COUNT = 9
 
-TERMINAL = "xterm"
+TERMINAL = os.getenv("TERM") or "xterm"
 
 
-global_keys = {}
+EDITOR_CMD = TERMINAL .. " -e " .. EDITOR
+
 
 local layouts = {
 	awful.layout.suit.max
 }
 
-tags = {}
 
+tags = {}
 
 -- Each screen has its own tag table.
 for s = 1, SCREEN_COUNT do
