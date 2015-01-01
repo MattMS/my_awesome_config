@@ -67,11 +67,12 @@ global_keys = awful.util.table.join(
 	awful.key({KEY.MOD,}, KEY.RIGHT, awful.tag.viewnext)
 )
 
--- Tag numbers.
+-- Create shortcuts for each tag number.
 for i = 1, TAG_COUNT do
 	global_keys = awful.util.table.join(
 		global_keys,
 
+		-- Only display the specified tag.
 		awful.key({KEY.MOD}, "#" .. i + 9, function ()
 			local screen = mouse.screen
 			local tag = tags[screen][i]
@@ -80,6 +81,7 @@ for i = 1, TAG_COUNT do
 			end
 		end),
 
+		-- Toggle display of a tag.
 		awful.key({KEY.SHIFT, KEY.MOD}, "#" .. i + 9, function ()
 			local screen = mouse.screen
 			local tag = tags[screen][i]
