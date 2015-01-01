@@ -108,5 +108,3 @@ global_keys = awful.util.table.join(
 root.keys(global_keys)
 
 -- }}}
-
--- vim: set foldmethod=manual
