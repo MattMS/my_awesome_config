@@ -8,7 +8,7 @@ Open Awesome using dev_rc.lua with Xephyr:
 ./dev_start.sh
 ```
 
-### Detailed version
+### Detailed steps for testing
 
 http://awesome.naquadah.org/wiki/Using_Xephyr
 
@@ -29,3 +29,5 @@ Xephyr -ac -br -noreset -screen 800x600 :1
 DISPLAY=:1.0
 awesome -c dev_rc.lua
 ```
+
+- `-c FILE` picks the config file to use.
